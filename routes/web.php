@@ -26,7 +26,7 @@ Route::get('/invoices/{id}', [InvoiceController::class, 'show'])->name('invoice.
 
 //ITP 405: Project 2
 Route::get('/playlists', [PlaylistController::class, 'index'])  //calls index function from InvoiceController class
-    ->name('playlist.index'); 
+    ->name('playlist.index');  
 
 Route::get('/playlists/{id}', [PlaylistController::class, 'show'])
     ->name('playlist.show');

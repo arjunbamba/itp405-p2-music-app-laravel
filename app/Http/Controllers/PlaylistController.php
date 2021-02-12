@@ -12,8 +12,8 @@ class PlaylistController extends Controller
     {
         $all_playlists = DB::table('playlists')
             ->get([
-                'id',
-                'name',
+                'playlists.id',
+                'playlists.name',
             ]); // Model Layer; 
 
             //SELECT id, name
