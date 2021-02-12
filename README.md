@@ -6,9 +6,9 @@
 
 **USC EMAIL**: arjunbam@usc.edu
 
-**PROJECT URL**: https://arjunbam-itp405-p2-music-app.herokuapp.com
+**PROJECT URL**: https://arjunbam-itp405-p2-music-app.herokuapp.com/playlists
 
-[VIEW PROJECT](https://arjunbam-itp405-p2-music-app.herokuapp.com)
+[VIEW PROJECT](https://arjunbam-itp405-p2-music-app.herokuapp.com/playlists)
 
 
 ---
