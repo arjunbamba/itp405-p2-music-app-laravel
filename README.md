@@ -1,3 +1,19 @@
+# ITP 405 Project 2: Music App
+
+**NAME**: Arjun Bamba
+
+**USC USERNAME**: arjunbam
+
+**USC EMAIL**: arjunbam@usc.edu
+
+**PROJECT URL**: https://arjunbam-itp405-p2-music-app.herokuapp.com
+
+[VIEW PROJECT](https://arjunbam-itp405-p2-music-app.herokuapp.com)
+
+
+---
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
