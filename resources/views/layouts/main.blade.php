@@ -18,6 +18,12 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('playlist.index')}}">Playlists</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('album.index')}}">Albums</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('track.index')}}">Tracks</a>
+                    </li>
                 </ul>
             </div>
             <div class="col-9">
@@ -25,6 +31,12 @@
                     <h2>@yield('title')</h2>
                 </header>
                 <main>
+                    {{-- success message upon create/update  --}}
+                    @if (session('success'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('success') }}
+                        </div>
+                    @endif
                     @yield('content') {{--external reference--}}
                 </main>
             </div>

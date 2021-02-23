@@ -6,8 +6,10 @@
 <table>
     <thead>
         <tr>
-            <th style="border-left: 1px solid #000; padding: 0px 10px;">Playlist ID</th>
-            <th style="border-left: 1px solid #000; border-right: 1px solid #000; text-align: center;">Playlist Name</th>
+            <th style="border-left: 1px solid #000; text-align: center;">Playlist ID</th>
+            <th style="border-left: 1px solid #000; text-align: center;">Playlist Name</th>
+            <th style="border-left: 1px solid #000; text-align: center;">Playlist Details</th>
+            <th style="border-left: 1px solid #000; text-align: center;">Action</th>
         </tr>
     </thead>
     <tbody>
@@ -19,10 +21,15 @@
                 <td style="border-left: 1px solid #000; text-align: center; padding: 0px 10px;">
                     {{$playlist->name}}
                 </td>
-                <td style="border-left: 1px solid #000">
+                <td style="border-left: 1px solid #000; text-align: center;">
                     {{-- /playlists/{{$playlist->id}} --}}
                     <a href="{{ route('playlist.show', ['id' => $playlist->id]) }}">
                         Details
+                    </a>
+                </td>
+                <td style="border-left: 1px solid #000; text-align: center; padding: 0px 10px;">
+                    <a href="{{ route('playlist.edit', [ 'id' => $playlist->id ]) }}">
+                        Rename
                     </a>
                 </td>
             </tr>
