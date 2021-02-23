@@ -1,10 +1,12 @@
-# ITP 405 Project 2: Music App
+# ITP 405: Music App
 
 **NAME**: Arjun Bamba
 
 **USC USERNAME**: arjunbam
 
 **USC EMAIL**: arjunbam@usc.edu
+
+**NOTE**: This consists of Projects 2 and 3 (as of 02/22/21)
 
 **PROJECT URL**: https://arjunbam-itp405-p2-music-app.herokuapp.com/playlists
 
