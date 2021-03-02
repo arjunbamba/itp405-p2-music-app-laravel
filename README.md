@@ -8,9 +8,9 @@
 
 **NOTE**: This consists of Projects 2, 3, and 5 (as of 03/01/21)
 
-**PROJECT URL**: https://arjunbam-itp405-p2-music-app.herokuapp.com/playlists
+**PROJECT URL**: http://arjunbam-itp405-p2-music-app.herokuapp.com/eloquent/albums
 
-[VIEW PROJECT](https://arjunbam-itp405-p2-music-app.herokuapp.com/playlists)
+[VIEW PROJECT](http://arjunbam-itp405-p2-music-app.herokuapp.com/eloquent/albums)
 
 
 ---
