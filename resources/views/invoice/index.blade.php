@@ -22,7 +22,15 @@
                     {{$invoice->invoice_date}}
                 </td>
                 <td>
-                    {{$invoice->first_name}} {{$invoice->last_name}}
+                    {{-- {{$invoice->first_name}} {{$invoice->last_name}} --}}
+                    {{-- {{$invoice->customer->first_name}} {{$invoice->customer->last_name}} --}}
+                    
+                    {{-- call getFullName() from customer model --}}
+                    {{-- Couldn't have done with queryBuilder as no models. Querybuilder gave object back but couldnt add custom method to that. --}}
+                    {{-- In ORM, classes are defined in model and that's returned when we use eloquent. so when you access customer relationship, you get back instance of customer model  --}}
+                    {{-- If you change getFullName() to getFullNameAttribute() in customer model, then you can just do ->full_name instead of ->getFullName(); --}}
+                    {{-- {{$invoice->customer->getFullName()}} --}}
+                    {{$invoice->customer->full_name}}
                 </td>
                 <td>
                     ${{$invoice->total}}

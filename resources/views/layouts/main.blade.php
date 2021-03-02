@@ -22,6 +22,9 @@
                         <a class="nav-link" href="{{route('album.index')}}">Albums</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="{{route('eloquent_album.index')}}">Albums (Eloquent)</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="{{route('track.index')}}">Tracks</a>
                     </li>
                 </ul>
