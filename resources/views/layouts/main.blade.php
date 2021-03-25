@@ -27,12 +27,37 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('track.index')}}">Tracks</a>
                     </li>
+
+                    {{-- Auth::check() checks if logged in via Auth::login in registration controller --}}
+                    @if (Auth::check())
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('profile.index') }}">Profile</a>
+                        </li>
+                        <li>
+                            <form method="post" action="{{ route('auth.logout') }}">
+                                @csrf {{-- must make a post request form to have this cross site request forgery protection --}}
+                                <button type="submit" class="btn btn-link">Logout</button>
+                            </form>
+                        </li>
+                    @else
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('registration.index') }}">Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('auth.loginForm') }}">Login</a>
+                        </li>
+                    @endif
                 </ul>
             </div>
             <div class="col-9">
                 <header>
                     <h2>@yield('title')</h2>
                 </header>
+                @if (session('error'))
+                    <div class="alert alert-danger" role="alert">
+                        {{ session('error') }}
+                    </div>
+                @endif
                 <main>
                     {{-- success message upon create/update  --}}
                     @if (session('success'))
