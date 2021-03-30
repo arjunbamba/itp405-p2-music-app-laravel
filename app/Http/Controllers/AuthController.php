@@ -32,6 +32,6 @@ class AuthController extends Controller
     {
         //Destroy the session and destroy the cookie
         Auth::logout();
-        return redirect()->route('invoice.index');
+        return redirect()->route('eloquent_album.index');
     }
 }

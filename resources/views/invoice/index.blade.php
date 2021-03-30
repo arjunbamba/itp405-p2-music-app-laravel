@@ -36,10 +36,12 @@
                     ${{$invoice->total}}
                 </td>
                 <td>
+                    @can ('view', $invoice) {{--Lecture 03/22: view will invoke policy and view-invoice will invoke gate --}}
                     {{-- /invoices/{{$invoice->id}} --}}
                     <a href="{{ route('invoice.show', [ 'id' => $invoice->id]) }}">
                         Details
                     </a>
+                    @endcan
                 </td>
             </tr>
         @endforeach

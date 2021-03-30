@@ -6,17 +6,23 @@ use Illuminate\Http\Request;
 use App\Models\Album;
 use App\Models\Artist;
 
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+
 class EloquentAlbumController extends Controller
 {
     public function index() {
 
         $albums = Album::with('artist')
+            ->with('user')
             ->join('artists', 'artists.id', '=', 'albums.artist_id')
+            ->join('users', 'users.id', '=', 'albums.user_id')
             ->orderBy('artists.name')
             ->orderBy('title')
             ->get([
                 'albums.*',
                 'artists.id AS artist_id', 
+                'users.id AS user_id',
             ]);
 
         return view('eloquent_album.index', [
@@ -47,6 +53,8 @@ class EloquentAlbumController extends Controller
         $album = new Album();
         $album->title = $request->input('title');
         $album->artist()->associate($artist);
+        $user = User::find(Auth::user()->id);
+        $album->user()->associate($user);
         $album->save();
 
         return redirect()
@@ -57,6 +65,8 @@ class EloquentAlbumController extends Controller
     public function edit($id) {
         $artists = Artist::orderBy('name')->get();
         $album = Album::find($id);
+        
+        $this->authorize('update', $album);
 
         return view('eloquent_album.edit', [
             'artists' => $artists,
@@ -73,6 +83,7 @@ class EloquentAlbumController extends Controller
         $artist = Artist::find($request->input('artist'));
 
         $album = Album::find($id);
+        $this->authorize('update', $album);
         $album->title = $request->input('title');
         $album->artist()->associate($artist);
         $album->save();

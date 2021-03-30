@@ -121,6 +121,8 @@ Route::middleware(['custom-auth'])->group(function() {
     
     Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout'); // Lecture 03/01
     Route::view('/blocked', 'blocked')->name('blocked');
+    Route::get('/eloquent/albums/create', [EloquentAlbumController::class, 'create'])->name('eloquent_album.create');
+    Route::get('/eloquent/albums/{id}/edit', [EloquentAlbumController::class, 'edit'])->name('eloquent_album.edit');
 
 });
 
@@ -152,10 +154,10 @@ Route::middleware(['maintenance-mode'])->group(function() {
 
     //ITP 405: Project 5 - ORM w/ Eloquent
     Route::get('/eloquent/albums', [EloquentAlbumController::class, 'index'])->name('eloquent_album.index');
-    Route::get('/eloquent/albums/create', [EloquentAlbumController::class, 'create'])->name('eloquent_album.create');
+    //Route::get('/eloquent/albums/create', [EloquentAlbumController::class, 'create'])->name('eloquent_album.create');
     Route::post('/eloquent/albums', [EloquentAlbumController::class, 'store'])->name('eloquent_album.store');
 
-    Route::get('/eloquent/albums/{id}/edit', [EloquentAlbumController::class, 'edit'])->name('eloquent_album.edit');
+    //Route::get('/eloquent/albums/{id}/edit', [EloquentAlbumController::class, 'edit'])->name('eloquent_album.edit');
     Route::post('/eloquent/albums/{id}', [EloquentAlbumController::class, 'update'])->name('eloquent_album.update');
 
     // LECTURE 03/01/21: Migrations/authentications - stopped at 00:37:50

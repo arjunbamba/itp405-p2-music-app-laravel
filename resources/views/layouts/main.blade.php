@@ -12,9 +12,11 @@
         <div class="row">
             <div class="col-3">
                 <ul class="nav flex-column">
+                    @can ('viewAny', App\Models\Invoice::class)
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('invoice.index')}}">Invoices</a>
                     </li>
+                    @endcan
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('playlist.index')}}">Playlists</a>
                     </li>
