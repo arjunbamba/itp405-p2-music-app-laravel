@@ -12,10 +12,20 @@ use App\Http\Controllers\TrackController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\URL;
 
+use App\Mail\NewAlbum;
+use App\Jobs\AnnounceNewAlbum;
+
 use App\Models\Artist;
 use App\Models\Track;
 use App\Models\Genre;
 use App\Models\Album;
+
+// Project 8
+use App\Models\Playlist;
+use App\Mail\Stats;
+use App\Jobs\EmailStats;
+
+use Illuminate\Support\Facades\Mail;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,7 +43,45 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//Lecture 02/22/21: ORM
+// Lecture 03/29
+Route::get('/mail', function() {
+    // Mail::raw('What is your favorite framework?', function($message) {
+    //     $message->to('arjunbam@usc.edu')->subject('Hello Arjun');
+    // });
+
+    // Use a queue: put email in queue via dispatch and have Laravel process it on the side so it's not part of the web request when we hit this route. Gonna put in queue and queue will process at a later time.
+    // dispatch(function() {
+    //     $masterOfPuppets = Album::find(152);
+    //     Mail::to('arjunbam@usc.edu')->send(new NewAlbum($masterOfPuppets));
+    // });
+
+    // Another way - changing ->send to ->queue - dispatch is good is you want to do complex things whereas queue method is good for like 1 email.
+    // $jaggedLittlePill = Album::find(6);
+    // Mail::to('arjunbam@usc.edu')->queue(new NewAlbum($jaggedLittlePill));
+
+    // We want to send bunch of emails to all users or do something with more complicated logic - monthly invoices, etc
+    // Can create a dedicated jobs class (AnnounceNewAlbum) to represent the entire job and call dispatch on that jobs class with some passed in data
+    // php artisan make:job ...
+
+    $jaggedLittlePill = Album::find(6);
+    AnnounceNewAlbum::dispatch($jaggedLittlePill);
+    // dispatch(new AnnounceNewAlbum($jaggedLittlePill)); // same as above
+
+    // return view('email.new-album', [
+    //     'album' => Album::first(),
+    // ]);
+    
+});
+
+// Project 8
+Route::post('/stats', function () {
+    $artist = Artist::count();
+    $playlist = Playlist::count();
+    $track = Track::sum('milliseconds');
+    EmailStats::dispatch($artist, $playlist, $track);
+})->name('admin.stats');
+
+// Lecture 02/22/21: ORM
 Route::get('eloquent', function() {
     // QUERYING
     // Artist::all();

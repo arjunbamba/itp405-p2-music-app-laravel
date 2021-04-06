@@ -19,8 +19,16 @@ class InvoiceController extends Controller
         // Lecture 3/1/21 ORM/Eloquent
         // $invoices = Invoice::all(); // Suffers from the N=1 problem
 
-        // A7: Take OUT: Eager loading to solve N+1 problem
-        //$invoices = Invoice::with('customer')->get(); 
+        // Eager loading to solve N+1 problem
+        // $invoices = Invoice::with('customer')->get(); 
+        // Lecture 03/22
+        $invoices = Invoice::select('invoices.*')
+             ->with(['customer'])
+             ->join('customers', 'invoices.customer_id', '=', 'customers.id')
+             ->when(!Auth::user()->isAdmin(), function($query) {
+                 return $query->where('customers.email', '=', Auth::user()->email);
+             })
+             ->get();
 
 
         // ----------
@@ -37,15 +45,6 @@ class InvoiceController extends Controller
             //SELECT invoices.id AS id, invoice_date, first_name, last_name, total
             //FROM invoices
             //INNER JOIN  customers ON invoices.customer_id = customers.id
-        
-        //A7
-        $invoices = Invoice::select('invoices.*')
-             ->with(['customer'])
-             ->join('customers', 'invoices.customer_id', '=', 'customers.id')
-             ->when(!Auth::user()->isAdmin(), function($query) {
-                 return $query->where('customers.email', '=', Auth::user()->email);
-             })
-             ->get();
 
         return view('invoice.index', [
             'invoices' => $invoices

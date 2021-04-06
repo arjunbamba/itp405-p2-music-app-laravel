@@ -3,6 +3,16 @@
 @section('title', 'Admin Settings Page')
 
 @section('content')
+{{-- Project 8: Emailing --}}
+<form action="{{ route('admin.stats') }}" method="POST">
+    @csrf
+    <button type="submit" class="btn btn-primary">
+        Email Stats to Users
+    </button>
+</form>
+
+<br/>
+
 <form action="{{ route('admin.update') }}" method="POST">
     @csrf
     <div class="mb-3">

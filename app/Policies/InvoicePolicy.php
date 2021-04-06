@@ -10,12 +10,12 @@ class InvoicePolicy
 {
     use HandlesAuthorization;
 
-    public function before(User $user)
-    {
-        if ($user->isAdmin()) {
-            return true;
-        }
-    }
+    // public function before(User $user)
+    // {
+    //     if ($user->isAdmin()) {
+    //         return true;
+    //     }
+    // }
 
     /**
      * Determine whether the user can view any models.
