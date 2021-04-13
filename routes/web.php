@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AlbumController;
+// use App\Http\Controllers\Api\AlbumController as ApiAlbumController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EloquentAlbumController;
@@ -42,6 +43,17 @@ use Illuminate\Support\Facades\Mail;
 Route::get('/', function () {
     return view('welcome');
 });
+
+//Lecture 04/05
+// Can register routes that correspond to different methods in ApiAlbumController.
+// Route::get('/api/albums', [ApiAlbumController::class, 'index'])->name('albums.index');
+
+// Because we created a resource controller, we can do all the Route::get/put/delete/etc in one line
+// Will register all routes that map to different methods
+// Can put in api.php
+// Route::resource('albums', ApiAlbumController::class);
+// Summary:
+// We created ressource controller inside of folder called api, defines all laravel routes that we wrote, and then those map to all names (index, store, show, etc) by convention that laravel has created.
 
 // Lecture 03/29
 Route::get('/mail', function() {

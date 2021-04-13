@@ -9,6 +9,8 @@ class Artist extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['name'];
+
     public function albums()
     {
         // album.artist_id is the foreign key column
