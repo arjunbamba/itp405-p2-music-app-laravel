@@ -6,7 +6,7 @@
 
 **USC EMAIL**: arjunbam@usc.edu
 
-**NOTE**: This consists of Projects 2, 3, 5, 6, 7, and 8 (as of 04/05/21)
+**NOTE**: This consists of Projects 2, 3, 5, 6, 7, 8, and 9 (as of 04/12/21)
 
 **PROJECT URL**: http://arjunbam-itp405-p2-music-app.herokuapp.com/eloquent/albums
 
